@@ -1,3 +1,161 @@
-:root {
-  background-color: rgb(67, 138, 185);
+body {
+  background-image: url(/assets/images/questionmark.jpg);
+}
+
+li {
+  padding-bottom: 3px;
+  color: white;
+  text-shadow: 1.5px 1px 3px black;
+  list-style-type: none;
+}
+
+p {
+  color: black;
+  text-align: center;
+  font-size: xx-large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+header {
+  display: flex;
+  text-align: center;
+  position: absolute;
+  top: 20%;
+}
+h1 {
+  font-size: 80px;
+  font-family: sans-serif;
+  color: #1c92f1;
+  font-style: italic;
+}
+h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 1rem;
+  font-size: larger;
+}
+input {
+  text-align: center;
+}
+
+main {
+  width: 100vw;
+  height: 130vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+button {
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #1c92f1;
+  border-radius: 10px;
+  border: 3px double #f7f3f3;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  width: 150px;
+  margin-top: 3px;
+}
+
+button:hover {
+  box-shadow: 4px 3px 6px #2f93c2;
+}
+
+#start-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+  border: black;
+  border-radius: 10px;
+  border-style: double;
+}
+
+#timer {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #1c92f1;
+  color: #eeeeee;
+  font-size: x-large;
+  text-shadow: 0.5px 0.5px black;
+  text-align: center;
+}
+#quiz {
+  display: none;
+}
+
+#result {
+  display: none;
+}
+
+#gameover {
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#highScore {
+  height: 1.5rem;
+  border: groove 2px;
+}
+
+#high-scorePage {
+  display: none;
+  width: 50%;
+  border: solid;
+  border-color: silver;
+  border-bottom-style: groove;
+  padding-bottom: 0.3rem;
+  background: lightsteelblue;
+}
+
+#highscore-header {
+  display: flex;
+  justify-content: space-around;
+  border-bottom-style: outset;
+  margin-bottom: 0.5rem;
+  background-color: #5e6df1;
+  color: #eeeeee;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#highscoreContainer {
+  height: 100%;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#initials {
+  margin: 0.5rem;
+  height: 1.75rem;
+}
+
+#highscore-initials {
+  display: inline-block;
+  padding-left: 9.5rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+#highscore-score {
+  float: right;
+  padding-right: 8.75rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+#finalScore {
+  padding-bottom: 0.5rem;
+  font-size: x-large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+#endGameBtns {
+  display: none;
 }

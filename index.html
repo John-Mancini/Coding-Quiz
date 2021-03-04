@@ -5,25 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coding Quiz</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
   </head>
 
   <body>
-    <div class="container">
-      <div id="start-page">
-        <h2>
-          This quiz is 5 Questions long. You will have a total of 100 seconds to
-          answer all of them.
-        </h2>
+    <main>
+      <header>
+        <h1>Coding Quiz!</h1>
+      </header>
+      <section id="start-page">
+        <h2>This quiz is 5 Questions long.</h2>
+        <h2>You will have a total of 100 seconds to answer all of them.</h2>
         <h2>This quiz will test your knowledge on coding!</h2>
         <button id="startbtn">Start</button>
         <button id="highscorePage" onclick="showHighscore()">
           High Scores
         </button>
-      </div>
+      </section>
 
-      <div id="quiz">
+      <section id="quiz">
         <div id="timer">Time left:</div>
         <div id="questions"><p>Questions Placeholder</p></div>
         <button id="a" onclick="checkAnswer('a')">A</button>
@@ -31,8 +38,8 @@
         <button id="c" onclick="checkAnswer('c')">C</button>
         <button id="d" onclick="checkAnswer('d')">D</button>
         <div id="result"></div>
-      </div>
-      <div id="gameover">
+      </section>
+      <section id="gameover">
         <div id="finalScore"></div>
         <input
           type="text"
@@ -42,21 +49,20 @@
           id="initials"
         />
         <button id="sumbitScore">Sumbit Score</button>
-      </div>
-      <div id=highscoreContainer>
+      </section>
+      <section id="highscoreContainer">
         <div id="high-score-header">
           <h3>User Initials</h3>
           <h3>Score</h3>
         </div>
         <div id="highscore-initials"></div>
         <div id="highscore-score"></div>
-      </div>
-      <div id="endGameBtns">
+      </section>
+      <section id="endGameBtns">
         <button id="playAgain" onclick="replayQuiz()">Play Again</button>
         <button id="clearHighscore" onclick="clearScore()">Highscores</button>
-      </div>
-      </div>
-    </div>
+      </section>
+    </main>
     <script scr="./assets/js/script.js"></script>
   </body>
 </html>
