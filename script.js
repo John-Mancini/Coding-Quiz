@@ -1,4 +1,4 @@
-// Gathering HTML elements for manipulation
+// Gathering HTML elements for Dom manipulation
 var quiz = document.getElementById("quiz");
 var gradesEl = document.getElementById("grade");
 var finalScoreEl = document.getElementById("finalScore");
@@ -63,10 +63,14 @@ var quizQuestions = [{
 // Other global variables
 var finalQuestionIndex = quizQuestions.length;
 var currentQuestionIndex = 0;
-var timeLeft = 100;
+var timeLeft=100;
 var timerInterval;
 var score = 0;
 var correct;
+
+
+// This button starts the quiz
+startQuizButton.addEventListener("click",startQuiz);
 
 // This function cycles through the object array containing the quiz questions to generate the questions and answers.
 function generateQuizQuestion(){
@@ -176,7 +180,7 @@ function replayQuiz(){
     highscoreBox.style.display = "none";
     gameoverSec.style.display = "none";
     startQuizSec.style.display = "flex";
-    timeLeft = 76;
+    timeLeft = 101;
     score = 0;
     currentQuestionIndex = 0;
 }
@@ -194,12 +198,10 @@ function checkAnswer(answer){
     }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
         alert("That Is Incorrect.")
         currentQuestionIndex++;
+        timeLeft -=15; //takes away 15 secs per wrong answer
         generateQuizQuestion();
         //display in the grades div that the answer is wrong.
     }else{
         showScore();
     }
 }
-
-// This button starts the quiz
-startQuizButton.addEventListener("click",startQuiz);
