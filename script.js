@@ -1,26 +1,25 @@
-//Gathering Element ids from html
-var actualQuiz = document.getElementById("quiz");
-var scoreEl = document.getElementById("grade");
+// Gathering HTML elements for manipulation
+var quiz = document.getElementById("quiz");
+var gradesEl = document.getElementById("grade");
 var finalScoreEl = document.getElementById("finalScore");
 var gameoverSec = document.getElementById("gameover");
-var questonsEl=document.getElementById("questions");
+var questionsEl = document.getElementById("questions");
 var quizTimer = document.getElementById("timer");
 var startQuizButton = document.getElementById("startbtn");
-var startQuizSec= document.getElementById("start-page");
-var highscoreBox=document.getElementById("highscoreBox")
-var highscoreSec=document.getElementById("highscore-Page");
-var highscoreUserName=document.getElementById("initials");
-var highscoreName=document.getElementById("highscore-initials");
-var endGameBtns=document.getElementById("endGameBtns");
-var submitGradeBtn=document.getElementById("sumbitScore");
-var DisplayScore=document.getElementById("highscore-score");
-var buttonA=document.getElementById("a");
-var buttonB=document.getElementById("b");
-var buttonC=document.getElementById("c");
-var buttonD=document.getElementById("d");
+var startQuizSec = document.getElementById("start-page");
+var highscoreBox = document.getElementById("highscoreBox");
+var highscoreSec = document.getElementById("highscore-Page");
+var highscoreName = document.getElementById("initials");
+var highscoreUsername = document.getElementById("highscore-initials");
+var endGameBtns = document.getElementById("endGameBtns");
+var submitScoreBtn = document.getElementById("submitScore");
+var highscoreDisplayScore = document.getElementById("highscore-score");
+var buttonA = document.getElementById("a");
+var buttonB = document.getElementById("b");
+var buttonC = document.getElementById("c");
+var buttonD = document.getElementById("d");
 
-//Quiz Questions
-
+// Quiz question object
 var quizQuestions = [{
     question:"1. An array can hold up to __________ elements?",
     choiceA:"3428372837",
@@ -61,65 +60,66 @@ var quizQuestions = [{
     choiceD:"Steve Jobs",
     correctAnswer:"c"},
 ];
-
-//Other Variables
-var finalQuestionIndex= quizQuestions.length;
-var currentQuestionIndex=0;
-var timeLeft=100;
-var timeinterval;
-var score=0;
+// Other global variables
+var finalQuestionIndex = quizQuestions.length;
+var currentQuestionIndex = 0;
+var timeLeft = 100;
+var timerInterval;
+var score = 0;
 var correct;
 
-//this function cycles thru the quiz questions 
+// This function cycles through the object array containing the quiz questions to generate the questions and answers.
 function generateQuizQuestion(){
     gameoverSec.style.display = "none";
-    if (currentQuestionIndex ===finalQuestionIndex){
+    if (currentQuestionIndex === finalQuestionIndex){
         return showScore();
-    }
-    var currentQuestion=quizQuestions[currentQuestionIndex];
-    questonsEl.innerHTML="<p>" + currentQuestion.question + "</p>";
-    buttonA.innerHTML= currentQuestion.choiceA;
-    buttonB.innerHTML= currentQuestion.choiceB;
-    buttonC.innerHTML= currentQuestion.choiceC;
-    buttonD.innerHTML= currentQuestion.choiceD;
+    } 
+    var currentQuestion = quizQuestions[currentQuestionIndex];
+    questionsEl.innerHTML = "<p>" + currentQuestion.question + "</p>";
+    buttonA.innerHTML = currentQuestion.choiceA;
+    buttonB.innerHTML = currentQuestion.choiceB;
+    buttonC.innerHTML = currentQuestion.choiceC;
+    buttonD.innerHTML = currentQuestion.choiceD;
 };
 
-//Start quiz function that starts timer, hides start page, and displays questions.
+// Start Quiz function starts the TimeRanges, hides the start button, and displays the first quiz question.
 function startQuiz(){
     gameoverSec.style.display = "none";
     startQuizSec.style.display = "none";
     generateQuizQuestion();
-    //timer
-    timeinterval = setInterval(function(){
-        timeLeft--;
-        quizTimer.textContent="Time left:" + timeLeft;
 
-        if(timeLeft===0){
-            clearInterval(timeinterval);
-            showScore();
-        }       
-    },1000);
-    actualQuiz.style.display = "block";
+    //Timer
+    timerInterval = setInterval(function() {
+        timeLeft--;
+        quizTimer.textContent = "Time left: " + timeLeft;
+    
+        if(timeLeft === 0) {
+          clearInterval(timerInterval);
+          showScore();
+        }
+      }, 1000);
+    quiz.style.display = "block";
 }
-//Function that displays score
+// This function is the end page screen that displays your score after either completeing the quiz or upon timer run out
 function showScore(){
-    actualQuiz.style.display = "none"
+    quiz.style.display = "none"
     gameoverSec.style.display = "flex";
     clearInterval(timerInterval);
-    highscoreUserName.value = "";
+    highscoreName.value = "";
     finalScoreEl.innerHTML = "You got " + score + " out of " + quizQuestions.length + " correct!";
 }
 
-//
+// submit button that saves the arrays of the highscore already saved in local storage
+// as well as pushing the new user name and score into the array we are saving in local storage. Then it runs the function to show high scores.
 submitScoreBtn.addEventListener("click", function highscore(){
     
     
-    if(highscoreUserName.value === "") {
+    if(highscoreName.value === "") {
         alert("Initials cannot be blank");
         return false;
     }else{
         var savedHighscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
-        var currentUser = highscoreUserName.value.trim();
+        var currentUser = highscoreName.value.trim();
         var currentHighscore = {
             name : currentUser,
             score : score
@@ -133,12 +133,14 @@ submitScoreBtn.addEventListener("click", function highscore(){
         savedHighscores.push(currentHighscore);
         localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
         generateHighscores();
-    }   
+
+    }
+    
 });
 
-//This fucntion clears the highscores
+// This function clears the list for the high scores and generates a new high score list from local storage
 function generateHighscores(){
-    highscoreName.innerHTML = "";
+    highscoreUsername.innerHTML = "";
     highscoreDisplayScore.innerHTML = "";
     var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
     for (i=0; i<highscores.length; i++){
@@ -146,12 +148,12 @@ function generateHighscores(){
         var newScoreSpan = document.createElement("li");
         newNameSpan.textContent = highscores[i].name;
         newScoreSpan.textContent = highscores[i].score;
-        highscoreName.appendChild(newNameSpan);
-        DisplayScore.appendChild(newScoreSpan);
+        highscoreUsername.appendChild(newNameSpan);
+        highscoreDisplayScore.appendChild(newScoreSpan);
     }
 }
 
-//
+// This function displays the high scores page and hides all the other pages
 function showHighscore(){
     startQuizSec.style.display = "none"
     gameoverSec.style.display = "none";
@@ -162,25 +164,24 @@ function showHighscore(){
     generateHighscores();
 }
 
-//
+// This function clears out the local storage of initials and scores.
 function clearScore(){
     window.localStorage.clear();
-    highscoreName.textContent = "";
-    DisplayScore.textContent = "";
+    highscoreUsername.textContent = "";
+    highscoreDisplayScore.textContent = "";
 }
 
-//
+// This function resets everything so that you can play the game again.
 function replayQuiz(){
     highscoreBox.style.display = "none";
     gameoverSec.style.display = "none";
     startQuizSec.style.display = "flex";
-    timeLeft = 100;
+    timeLeft = 76;
     score = 0;
     currentQuestionIndex = 0;
 }
 
-//
-
+// This functions chesks if the answer chosen is right or wrong
 function checkAnswer(answer){
     correct = quizQuestions[currentQuestionIndex].correctAnswer;
 
@@ -189,17 +190,16 @@ function checkAnswer(answer){
         alert("That Is Correct!");
         currentQuestionIndex++;
         generateQuizQuestion();
-        //display in the results div that the answer is correct.
+        //display in the grades div that the answer is correct.
     }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
         alert("That Is Incorrect.")
         currentQuestionIndex++;
         generateQuizQuestion();
-        //display in the results div that the answer is wrong.
+        //display in the grades div that the answer is wrong.
     }else{
         showScore();
     }
 }
 
-//
+// This button starts the quiz
 startQuizButton.addEventListener("click",startQuiz);
-
