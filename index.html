@@ -12,7 +12,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
   </head>
 
   <body>
@@ -37,7 +36,7 @@
         <button id="b" onclick="checkAnswer('b')">B</button>
         <button id="c" onclick="checkAnswer('c')">C</button>
         <button id="d" onclick="checkAnswer('d')">D</button>
-        <div id="result"></div>
+        <div id="grade"></div>
       </section>
       <section id="gameover">
         <div id="finalScore"></div>
@@ -50,17 +49,21 @@
         />
         <button id="sumbitScore">Sumbit Score</button>
       </section>
-      <section id="highscoreContainer">
-        <div id="high-score-header">
-          <h3>User Initials</h3>
-          <h3>Score</h3>
-        </div>
-        <div id="highscore-initials"></div>
-        <div id="highscore-score"></div>
-      </section>
-      <section id="endGameBtns">
-        <button id="playAgain" onclick="replayQuiz()">Play Again</button>
-        <button id="clearHighscore" onclick="clearScore()">Highscores</button>
+      <section id="highscoreBox">
+        <section id="highscore-Page">
+          <div id="highscore-header">
+            <h3>User Initials</h3>
+            <h3>Score</h3>
+          </div>
+          <div id="highscore-initials"></div>
+          <div id="highscore-score"></div>
+        </section>
+        <section id="endGameBtns">
+          <button id="playAgain" onclick="replayQuiz()">Play Again</button>
+          <button id="clearHighscore" onclick="clearScore()">
+            Clear Highscores
+          </button>
+        </section>
       </section>
     </main>
     <script scr="./assets/js/script.js"></script>

@@ -86,7 +86,7 @@ button:hover {
   display: none;
 }
 
-#result {
+#grade {
   display: none;
 }
 
@@ -102,7 +102,7 @@ button:hover {
   border: groove 2px;
 }
 
-#high-scorePage {
+#highscore-Page {
   display: none;
   width: 50%;
   border: solid;
@@ -121,7 +121,7 @@ button:hover {
   color: #eeeeee;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-#highscoreContainer {
+#highscoreBox {
   height: 100%;
   width: 100%;
   display: none;
