@@ -25,17 +25,19 @@ header {
   position: absolute;
   top: 0%;
   width: 600px;
-  height: 150px;
+  /* height: 150px; */
   margin: 10 auto;
   letter-spacing: 2px;
-  border-bottom: 2px solid black;
-  background: whitesmoke;
+  /* border-bottom: 2px solid black;
+  background: whitesmoke; */
 }
 h1 {
   font-size: 80px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #1c92f1;
   font-style: italic;
+  border-bottom: 2px solid black;
+  background: whitesmoke;
 }
 h2 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
